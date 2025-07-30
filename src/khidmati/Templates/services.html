@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Available Services</h1>
+  <ul>
+    {% for service in services %}
+      <ul><strong>{{ service.name }}</strong>:
+        <li>{{ service.description }}</li>
+        <li>Price: ${{ service.price }}</li>
+        <li>Duration: {{ service.duration }} minutes</li>
+        <a href = {{ service.name }}><button>Consilt this service</button></a>
+      </ul>
+      <bar>******</bar>
+
+    {% endfor %}
+  </ul>
+
+
+{% endblock %}

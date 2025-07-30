@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>HI i am a plumber</h1>
+<!-- Example: plumbing.html -->
+<form method="post">
+    {% csrf_token %}
+    <select name="plumber">
+        {% for plumber in plumbers %}
+            <option value="{{ plumber.id }}"
+                {% if selected_plumber and plumber.id == selected_plumber.id %}selected{% endif %}>
+                {{ plumber.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Get Info</button>
+</form>
+
+{% if selected_plumber %}
+    <h2>Plumber Details</h2>
+    <ul>
+        <li>Name: {{ selected_plumber.name }}</li>
+        <li>Specialty: {{ selected_plumber.specialty }}</li>
+        <li>Experience: {{ selected_plumber.experience }} years</li>
+        <li>Rating: {{ selected_plumber.rating }}</li>
+        <li>Location: {{ selected_plumber.location }}</li>
+        <li>Contact: {{ selected_plumber.contact }}</li>
+    </ul>
+
+    <form action = "{% url 'appointment' %}" method="Get">
+        {% csrf_token %}
+        <input type="hidden" name="plumber_id" value="{{ selected_plumber.id }}">
+        <button type="submit">Book Appointment</button> 
+    </form>
+
+
+    
+{% endif %}
+{% endblock %}
