@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView 
 
 from plumbing.views import plumbing_view, home_view, appointment_view
 
-from services.views import service_list
 
+from services.views import service_list
+from electitions.views import electrition_view , appointment_view
 urlpatterns = [
     path('plumbing', plumbing_view, name='plumbing_home'),
     
@@ -29,8 +31,11 @@ urlpatterns = [
     path('appointment_success', appointment_view, name='appointment_success'),
     
     path('services', service_list, name='services'),
+    path('electritions', electrition_view, name='electritions'),
+    path('elec_appointment', appointment_view, name='elec_appointment'),
     
     path('', home_view, name='home'),
+    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     
     path('admin/', admin.site.urls),
 ]

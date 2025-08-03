@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>HI, I am an Electrician</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <select name="electrition">
+        {% for electrition in electrition_list %}
+            <option value="{{ electrition.id }}"
+                {% if selected_electrition and electrition.id == selected_electrition.id %}selected{% endif %}>
+                {{ electrition.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Get Info</button>
+</form>
+
+{% if selected_electrition %}
+    <h2>Electrician Details</h2>
+    <ul>
+        <li>Name: {{ selected_electrition.name }}</li>
+        <li>Specialty: {{ selected_electrition.specialty }}</li>
+        <li>Experience: {{ selected_electrition.experience }} years</li>
+        <li>Rating: {{ selected_electrition.rating }}</li>
+        <li>Location: {{ selected_electrition.location }}</li>
+        <li>Contact: {{ selected_electrition.contact }}</li>
+    </ul>
+    <form action="{% url 'elec_appointment' %}" method="get">
+        {% csrf_token %}
+        <input type="hidden" name="electrition_id" value="{{ selected_electrition.id }}">
+        <button type="submit">Book Appointment</button>
+    </form>
+{% endif %}
+{% endblock %}

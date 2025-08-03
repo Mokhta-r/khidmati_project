@@ -46,3 +46,4 @@ def home_view(request):
     Render the home page.
     """
     return render(request, 'home_page.html')
+

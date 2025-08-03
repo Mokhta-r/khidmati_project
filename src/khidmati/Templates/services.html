@@ -1,19 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Available Services</h1>
-  <ul>
-    {% for service in services %}
-      <ul><strong>{{ service.name }}</strong>:
-        <li>{{ service.description }}</li>
-        <li>Price: ${{ service.price }}</li>
-        <li>Duration: {{ service.duration }} minutes</li>
-        <a href = {{ service.name }}><button>Consilt this service</button></a>
-      </ul>
-      <bar>******</bar>
+<div class="container mt-5">
+    <div class="card shadow p-4">
+      <div>
+        <h1 class="mb-4 text-primary">Our Services</h1>
+        <p class="lead">Explore the range of services we offer to meet your needs.</p>
+      </div>
+        <div class="service-list " style="margin-top: 20px;">
+          <h1 class = "mb-2 text-primary" >Available Services</h1>
+          <ul>
+            {% for service in services %}
+              <ul><strong>{{ service.name }}</strong>:
+                <li>{{ service.description }}</li>
+                <li>Price: ${{ service.price }}</li>
+                <li>Duration: {{ service.duration }} minutes</li>
+                <a href = {{ service.name }}><button>Consilt this service</button></a>
+              </ul>
+              <bar>******</bar>
 
-    {% endfor %}
-  </ul>
+            {% endfor %}
+          </ul>
+        </div>
+    <p class = "">If you have any questions or need further information, feel free to contact us!</p>
+    </div>
+</div>
 
 
 {% endblock %}

@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1>Appointment Success</h1>
-<p>Your appointment has been successfully booked!</p>   
-<p>Thank you for choosing our service. We will contact you shortly to confirm the details.</p>
-
- 
+<h2>Appointment Booked Successfully!</h2>
+<p>Thank you, {{ appointment.customer_name }}. Your appointment with {{ appointment.electrition.name }} is confirmed.</p>
+<p>Date: {{ appointment.appointment_date }}</p>
+<p>Contact: {{ appointment.customer_contact }}</p>
+<p>Notes: {{ appointment.notes }}</p>
 {% endblock %}
