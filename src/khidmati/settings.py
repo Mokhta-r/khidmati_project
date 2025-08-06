@@ -57,7 +57,7 @@ ROOT_URLCONF = 'khidmati.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:\\Users\\dell\\desktop\\projects\\khidmati_project\\src\\khidmati\\Templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
